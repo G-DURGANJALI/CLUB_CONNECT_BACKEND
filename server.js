@@ -15,7 +15,10 @@ const app = express();
 // Middleware
 
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+   origin: process.env.FRONTEND_URL,
+    credentials: true,
+}));
 app.use(express.json()); // <--- This is important to parse JSON request bodies
 app.use(express.urlencoded({ extended: true })); // Optional, for form data
 let isConnected = false;
